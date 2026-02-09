@@ -1,0 +1,13 @@
+{
+  "build": {
+    "builder": "heroku/php",
+    "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT"
+  },
+  "deploy": {
+    "beforeStartCommand": [
+      "composer install --no-interaction --prefer-dist --optimize-autoloader",
+      "php artisan key:generate",
+      "php artisan migrate --force"
+    ]
+  }
+}
